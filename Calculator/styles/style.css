@@ -32,6 +32,11 @@ main {
   margin-bottom: 10%;
 }
 
+.display h1 {
+  color: black;
+  
+}
+
 .keys {
   display: grid;
   grid-template-areas:

@@ -1,5 +1,6 @@
 'use sctrict';
 let display = '0';
+document.getElementById("numbersOnDisplay").innerHTML = display;
 
 /* take input
 calculate
@@ -15,8 +16,8 @@ function numberPress(button) {
     //else pressing multiple buttons for larger numbers
     display += button.innerHTML;
   }
-  // DEBUG
-  alert(display)
+  // Update number on calculator
+  document.getElementById("numbersOnDisplay").innerHTML = display;
 }
 
 // Add calculation to I'm not sure yet
