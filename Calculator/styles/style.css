@@ -22,6 +22,7 @@ main {
   width: 75%;
   height: 75%;
   border: 3px solid black;
+  background-color: gray;
 }
 
 .display {
@@ -34,6 +35,8 @@ main {
 
 .display h1 {
   color: black;
+  font-size: 32px;
+  font-family: 'Handjet', cursive;
   
 }
 

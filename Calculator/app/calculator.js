@@ -27,6 +27,17 @@ function operatorPress(button) {
     return // No action taken if there isn't a number to math
   } else {
     display += ` ${button.innerHTML}`;
+    // DEBUG
     alert(display);
   }
+}
+
+
+
+
+
+// Clear the input
+function clearPress(button) {
+  display = '0';
+  document.getElementById("numbersOnDisplay").innerHTML = display;
 }
