@@ -23,6 +23,10 @@ function numberPress(button) {
 // Add calculation to I'm not sure yet
 // DEBUG let firstNumber = new String(display);
 function operatorPress(button) {
-  display += ` ${button.innerHTML}`;
-  alert(display);
+  if (display === '0') {    
+    return // No action taken if there isn't a number to math
+  } else {
+    display += ` ${button.innerHTML}`;
+    alert(display);
+  }
 }
