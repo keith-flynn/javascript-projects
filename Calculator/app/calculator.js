@@ -1,43 +1,44 @@
 'use sctrict';
 let display = '0';
-document.getElementById("numbersOnDisplay").innerHTML = display;
-
-/* take input
-calculate
-display
- */
+let firstNumber;
+let operator = '';
+let firstValue = false;
 
 // Take numerical input
 function numberPress(button) {
-  if (display === '0') {
-    //if button press is first input
+  if (operator === '') {
+    if (display === '0') {
+      //if button press is first input
+      display = button.innerHTML;
+    } else {
+      //else pressing multiple buttons for larger numbers
+      display += button.innerHTML;
+    }
+  } else if (operator && firstValue === false) {
     display = button.innerHTML;
-  } else {
-    //else pressing multiple buttons for larger numbers
+    firstValue = true;
+  } else /* (operator && firstValue) */ {
     display += button.innerHTML;
   }
-  // Update number on calculator
+  
+  // Update number on calculator display
   document.getElementById("numbersOnDisplay").innerHTML = display;
 }
 
-// Add calculation to I'm not sure yet
-// DEBUG let firstNumber = new String(display);
 function operatorPress(button) {
-  if (display === '0') {    
-    return // No action taken if there isn't a number to math
-  } else {
-    display += ` ${button.innerHTML}`;
-    // DEBUG
-    alert(display);
-  }
+  firstNumber = display.slice();
+  operator = button.innerHTML;
+  // if firstNumber === undefined,
+  //display = firstNumber operator secondNumber 
+  //document.getElementById("numbersOnDisplay").innerHTML = display;
 }
 
 
 
-
-
-// Clear the input
+// Clear and reset display to zero
 function clearPress(button) {
   display = '0';
+  operator = '';
+  firstValue = false;
   document.getElementById("numbersOnDisplay").innerHTML = display;
 }
