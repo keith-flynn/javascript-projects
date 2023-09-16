@@ -2,22 +2,14 @@
 let display = '0';
 let firstNumber;
 let operator = '';
-let firstValue = false;
 
 // Take numerical input
 function numberPress(button) {
-  if (operator === '') {
-    if (display === '0') {
-      //if button press is first input
-      display = button.innerHTML;
-    } else {
-      //else pressing multiple buttons for larger numbers
-      display += button.innerHTML;
-    }
-  } else if (operator && firstValue === false) {
+  if (display === '0') {
+    //if button press is first input
     display = button.innerHTML;
-    firstValue = true;
-  } else /* (operator && firstValue) */ {
+  } else {
+    //else pressing multiple buttons for larger numbers
     display += button.innerHTML;
   }
   
@@ -25,20 +17,28 @@ function numberPress(button) {
   document.getElementById("numbersOnDisplay").innerHTML = display;
 }
 
+// Take operator input
 function operatorPress(button) {
   firstNumber = display.slice();
   operator = button.innerHTML;
-  // if firstNumber === undefined,
-  //display = firstNumber operator secondNumber 
-  //document.getElementById("numbersOnDisplay").innerHTML = display;
+  display = '0';
 }
 
+// Evaluate mathematical expression 
+function equalsPress(button) {
+  let expression = (firstNumber + operator + display);
 
+  // Try/catch for JavaScript errors
+  try {
+    document.getElementById("numbersOnDisplay").innerHTML = eval(expression);
+  } catch (error) {
+    document.getElementById("numbersOnDisplay").innerHTML = "Err.";
+  }
+}
 
 // Clear and reset display to zero
 function clearPress(button) {
   display = '0';
   operator = '';
-  firstValue = false;
   document.getElementById("numbersOnDisplay").innerHTML = display;
 }
