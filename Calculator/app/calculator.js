@@ -1,44 +1,44 @@
 'use sctrict';
-let display = '0';
-let firstNumber;
+let displayValue = '0';
+let firstNumber = '';
 let operator = '';
+let writeOverDisplay = true;
 
 // Take numerical input
 function numberPress(button) {
-  if (display === '0') {
+  if (writeOverDisplay) {
     //if button press is first input
-    display = button.innerHTML;
+    displayValue = button.innerHTML;
+    writeOverDisplay = false;
   } else {
     //else pressing multiple buttons for larger numbers
-    display += button.innerHTML;
-  }
-  
+    displayValue += button.innerHTML;
+  }  
   // Update number on calculator display
-  document.getElementById("numbersOnDisplay").innerHTML = display;
+  document.getElementById("numbersOnDisplay").innerHTML = displayValue;
 }
 
 // Take operator input
 function operatorPress(button) {
-  firstNumber = display.slice();
+  firstNumber = displayValue.slice();
   operator = button.innerHTML;
-  display = '0';
+  writeOverDisplay = true;
 }
 
 // Evaluate mathematical expression 
-function equalsPress(button) {
-  let expression = (firstNumber + operator + display);
-
-  // Try/catch for JavaScript errors
-  try {
-    document.getElementById("numbersOnDisplay").innerHTML = eval(expression);
-  } catch (error) {
-    document.getElementById("numbersOnDisplay").innerHTML = "Err.";
-  }
+function equalsPress() {
+  let evaluation = eval(firstNumber + operator + displayValue);
+  displayValue = evaluation.toString();
+  document.getElementById("numbersOnDisplay").innerHTML = displayValue;
+  firstNumber = displayValue.slice();
+  writeOverDisplay = true;
 }
 
 // Clear and reset display to zero
 function clearPress(button) {
-  display = '0';
+  displayValue = '0';
+  firstNumber = '';
   operator = '';
-  document.getElementById("numbersOnDisplay").innerHTML = display;
+  writeOverDisplay = true;
+  document.getElementById("numbersOnDisplay").innerHTML = displayValue;
 }
