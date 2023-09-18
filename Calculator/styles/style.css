@@ -12,6 +12,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: url(../img/jazz.webp)
+  ;
 }
 
 main {
@@ -68,11 +70,4 @@ button {
   width: 50px;
   color: black;
   border-radius: 50%;
-}
-
-
-@media screen and (min-width: 480px) {
-  body {
-    background-color: lightgreen;
-  }
 }
